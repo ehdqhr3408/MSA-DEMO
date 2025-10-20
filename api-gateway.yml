@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          httpclient:
+            connect-timeout: 5000
+            response-timeout: 5000ms
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/master
+          jwk-set-uri: http://localhost:8081/realms/master/protocol/openid-connect/certs
+
+gateway:
+  security:
+    jwks-uri: http://localhost:8081/realms/master/protocol/openid-connect/certs
+    jwks-cache-ttl: PT10M
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      backendCircuitBreaker:
+        register-health-indicator: true
+        sliding-window-size: 20
+        failure-rate-threshold: 40
