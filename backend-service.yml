@@ -8,7 +8,7 @@ spring:
       defaultBinder: rabbit
 
 backend:
-  greeting: Hello from config-server backend profile! git test2
+  greeting: Hello from config-server backend profile! git test3
 
 management:
   endpoints:
