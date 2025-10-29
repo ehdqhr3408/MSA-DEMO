@@ -36,6 +36,37 @@ spring:
             metadata:
               group: "default"
               description: "Backend service route"
+          - id: "inventory-service-route"
+            uri: "lb://inventory-service"
+            predicates:
+            - "Path=/inventory/**"
+            filters:
+            - name: "PreLoggingFilter"
+              args:
+                order: 0
+                preLogger: true
+                baseMessage: "inventory-service-route-request"
+            - name: "CircuitBreaker"
+              args:
+                name: "inventory-service-routeCircuitBreaker"
+            - name: "Retry"
+              args:
+                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
+                backoff:
+                  firstBackoff: "50ms"
+                  basedOnPreviousValue: false
+                  maxBackoff: "500ms"
+                  factor: 2
+                methods: "GET,POST"
+                retries: 3
+            - name: "PostLoggingFilter"
+              args:
+                order: 100
+                baseMessage: "inventory-service-route-response"
+                postLogger: true
+            metadata:
+              group: "default"
+              description: "Inventory service route"
           - id: "order-service-route"
             uri: "lb://order-service"
             predicates:
