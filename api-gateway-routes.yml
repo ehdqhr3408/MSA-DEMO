@@ -20,14 +20,14 @@ spring:
                 name: "backend-service-routeCircuitBreaker"
             - name: "Retry"
               args:
+                retries: 3
                 methods: "GET,POST"
                 backoff:
+                  factor: 2
                   maxBackoff: "500ms"
                   basedOnPreviousValue: false
                   firstBackoff: "50ms"
-                  factor: 2
                 statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
-                retries: 3
             - name: "PostLoggingFilter"
               args:
                 postLogger: true
@@ -51,14 +51,14 @@ spring:
                 name: "inventory-service-routeCircuitBreaker"
             - name: "Retry"
               args:
+                retries: 3
                 methods: "GET,POST"
                 backoff:
+                  factor: 2
                   maxBackoff: "500ms"
                   basedOnPreviousValue: false
                   firstBackoff: "50ms"
-                  factor: 2
                 statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
-                retries: 3
             - name: "PostLoggingFilter"
               args:
                 postLogger: true
@@ -82,14 +82,14 @@ spring:
                 name: "order-service-routeCircuitBreaker"
             - name: "Retry"
               args:
+                retries: 3
                 methods: "GET,POST"
                 backoff:
+                  factor: 2
                   maxBackoff: "500ms"
                   basedOnPreviousValue: false
                   firstBackoff: "50ms"
-                  factor: 2
                 statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
-                retries: 3
             - name: "PostLoggingFilter"
               args:
                 postLogger: true
