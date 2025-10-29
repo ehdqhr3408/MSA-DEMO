@@ -14,7 +14,7 @@ spring:
               args:
                 baseMessage: "backend-service-route-request"
                 preLogger: true
-                order: 0
+                order: 1
             - name: "CircuitBreaker"
               args:
                 name: "backend-service-routeCircuitBreaker"

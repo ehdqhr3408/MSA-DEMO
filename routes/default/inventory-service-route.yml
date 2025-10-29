@@ -1,8 +1,32 @@
 ---
-routeId: "inventory-service-route"
-groupKey: "default"
-path: "/inventory/**"
-httpMethod: null
-targetUri: "lb://inventory-service"
-enabled: true
-description: "Inventory service route"
+id: "inventory-service-route"
+uri: "lb://inventory-service"
+predicates:
+- "Path=/inventory/**"
+filters:
+- name: "PreLoggingFilter"
+  args:
+    baseMessage: "inventory-service-route-request"
+    preLogger: true
+    order: 0
+- name: "CircuitBreaker"
+  args:
+    name: "inventory-service-routeCircuitBreaker"
+- name: "Retry"
+  args:
+    methods: "GET,POST"
+    backoff:
+      basedOnPreviousValue: false
+      firstBackoff: "50ms"
+      factor: 2
+      maxBackoff: "500ms"
+    statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
+    retries: 3
+- name: "PostLoggingFilter"
+  args:
+    baseMessage: "inventory-service-route-response"
+    order: 100
+    postLogger: true
+metadata:
+  group: "default"
+  description: "Inventory service route"
