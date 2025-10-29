@@ -12,27 +12,27 @@ spring:
             filters:
             - name: "PreLoggingFilter"
               args:
-                order: 0
-                preLogger: true
                 baseMessage: "backend-service-route-request"
+                preLogger: true
+                order: 0
             - name: "CircuitBreaker"
               args:
                 name: "backend-service-routeCircuitBreaker"
             - name: "Retry"
               args:
-                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
-                backoff:
-                  firstBackoff: "50ms"
-                  basedOnPreviousValue: false
-                  maxBackoff: "500ms"
-                  factor: 2
                 methods: "GET,POST"
+                backoff:
+                  maxBackoff: "500ms"
+                  basedOnPreviousValue: false
+                  firstBackoff: "50ms"
+                  factor: 2
+                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
                 retries: 3
             - name: "PostLoggingFilter"
               args:
-                order: 100
-                baseMessage: "backend-service-route-response"
                 postLogger: true
+                baseMessage: "backend-service-route-response"
+                order: 100
             metadata:
               group: "default"
               description: "Backend service route"
@@ -43,27 +43,27 @@ spring:
             filters:
             - name: "PreLoggingFilter"
               args:
-                order: 0
-                preLogger: true
                 baseMessage: "inventory-service-route-request"
+                preLogger: true
+                order: 0
             - name: "CircuitBreaker"
               args:
                 name: "inventory-service-routeCircuitBreaker"
             - name: "Retry"
               args:
-                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
-                backoff:
-                  firstBackoff: "50ms"
-                  basedOnPreviousValue: false
-                  maxBackoff: "500ms"
-                  factor: 2
                 methods: "GET,POST"
+                backoff:
+                  maxBackoff: "500ms"
+                  basedOnPreviousValue: false
+                  firstBackoff: "50ms"
+                  factor: 2
+                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
                 retries: 3
             - name: "PostLoggingFilter"
               args:
-                order: 100
-                baseMessage: "inventory-service-route-response"
                 postLogger: true
+                baseMessage: "inventory-service-route-response"
+                order: 100
             metadata:
               group: "default"
               description: "Inventory service route"
@@ -74,27 +74,27 @@ spring:
             filters:
             - name: "PreLoggingFilter"
               args:
-                order: 0
-                preLogger: true
                 baseMessage: "order-service-route-request"
+                preLogger: true
+                order: 0
             - name: "CircuitBreaker"
               args:
                 name: "order-service-routeCircuitBreaker"
             - name: "Retry"
               args:
-                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
-                backoff:
-                  firstBackoff: "50ms"
-                  basedOnPreviousValue: false
-                  maxBackoff: "500ms"
-                  factor: 2
                 methods: "GET,POST"
+                backoff:
+                  maxBackoff: "500ms"
+                  basedOnPreviousValue: false
+                  firstBackoff: "50ms"
+                  factor: 2
+                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
                 retries: 3
             - name: "PostLoggingFilter"
               args:
-                order: 100
-                baseMessage: "order-service-route-response"
                 postLogger: true
+                baseMessage: "order-service-route-response"
+                order: 100
             metadata:
               group: "default"
               description: "Order service route"
