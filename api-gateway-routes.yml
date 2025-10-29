@@ -20,19 +20,19 @@ spring:
                 name: "backend-service-routeCircuitBreaker"
             - name: "Retry"
               args:
-                retries: 3
                 methods: "GET,POST"
                 backoff:
-                  factor: 2
-                  maxBackoff: "500ms"
                   basedOnPreviousValue: false
                   firstBackoff: "50ms"
+                  factor: 2
+                  maxBackoff: "500ms"
                 statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
+                retries: 3
             - name: "PostLoggingFilter"
               args:
-                postLogger: true
                 baseMessage: "backend-service-route-response"
                 order: 100
+                postLogger: true
             metadata:
               group: "default"
               description: "Backend service route"
@@ -51,19 +51,19 @@ spring:
                 name: "inventory-service-routeCircuitBreaker"
             - name: "Retry"
               args:
-                retries: 3
                 methods: "GET,POST"
                 backoff:
-                  factor: 2
-                  maxBackoff: "500ms"
                   basedOnPreviousValue: false
                   firstBackoff: "50ms"
+                  factor: 2
+                  maxBackoff: "500ms"
                 statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
+                retries: 3
             - name: "PostLoggingFilter"
               args:
-                postLogger: true
                 baseMessage: "inventory-service-route-response"
                 order: 100
+                postLogger: true
             metadata:
               group: "default"
               description: "Inventory service route"
@@ -82,19 +82,19 @@ spring:
                 name: "order-service-routeCircuitBreaker"
             - name: "Retry"
               args:
-                retries: 3
                 methods: "GET,POST"
                 backoff:
-                  factor: 2
-                  maxBackoff: "500ms"
                   basedOnPreviousValue: false
                   firstBackoff: "50ms"
+                  factor: 2
+                  maxBackoff: "500ms"
                 statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
+                retries: 3
             - name: "PostLoggingFilter"
               args:
-                postLogger: true
                 baseMessage: "order-service-route-response"
                 order: 100
+                postLogger: true
             metadata:
               group: "default"
               description: "Order service route"
