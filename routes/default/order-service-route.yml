@@ -1,0 +1,8 @@
+---
+routeId: "order-service-route"
+groupKey: "default"
+path: "/orders/**"
+httpMethod: null
+targetUri: "lb://order-service"
+enabled: true
+description: "Order service route"
