@@ -1,0 +1,38 @@
+---
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+          - id: "backend-service-route"
+            uri: "lb://backend-service"
+            predicates:
+            - "Path=/api/backend/**"
+            filters:
+            - name: "PreLoggingFilter"
+              args:
+                order: 0
+                preLogger: true
+                baseMessage: "backend-service-route-request"
+            - name: "CircuitBreaker"
+              args:
+                name: "backend-service-routeCircuitBreaker"
+            - name: "Retry"
+              args:
+                statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
+                backoff:
+                  firstBackoff: "50ms"
+                  basedOnPreviousValue: false
+                  maxBackoff: "500ms"
+                  factor: 2
+                methods: "GET,POST"
+                retries: 3
+            - name: "PostLoggingFilter"
+              args:
+                order: 100
+                baseMessage: "backend-service-route-response"
+                postLogger: true
+            metadata:
+              group: "default"
+              description: "Backend service route"
