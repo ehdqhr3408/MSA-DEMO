@@ -30,4 +30,4 @@ filters:
 metadata:
   group: "default"
   description: "Inventory service route"
-  enabled: false
+  enabled: true
