@@ -2,7 +2,7 @@
 id: "inventory-service-route"
 uri: "lb://inventory-service"
 predicates:
-- "Path=/inventory2/**"
+- "Path=/inventory/**"
 filters:
 - name: "PreLoggingFilter"
   args:
