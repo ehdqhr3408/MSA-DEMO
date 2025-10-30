@@ -1,6 +1,6 @@
 spring:
   application:
-    name: backend-service
+    name: backend-service1
   cloud:
     bus:
       enabled: ${SPRING_CLOUD_BUS_ENABLED:false}
