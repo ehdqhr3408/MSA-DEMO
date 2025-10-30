@@ -19,7 +19,7 @@ filters:
     statuses: "BAD_GATEWAY,SERVICE_UNAVAILABLE,NOT_FOUND"
     methods: "GET,POST"
     backoff:
-      firstBackoff: "50ms"
+      firstBackoff: "500ms"
       maxBackoff: "500ms"
       factor: 2
       basedOnPreviousValue: false
