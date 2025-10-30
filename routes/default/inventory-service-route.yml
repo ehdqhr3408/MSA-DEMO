@@ -9,6 +9,7 @@ filters:
     baseMessage: "inventory-service-route-request"
     preLogger: true
     order: 0
+- name: "JwtTokenFilter"
 - name: "CircuitBreaker"
   args:
     name: "inventory-service-routeCircuitBreaker"
