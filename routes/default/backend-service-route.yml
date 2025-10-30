@@ -1,6 +1,6 @@
 ---
 id: "backend-service-route"
-uri: "lb://backend-service"
+uri: "lb://backend-service1"
 predicates:
 - "Path=/api/backend/**"
 filters:

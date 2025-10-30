@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: order-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_ISSUER_URI:http://localhost:8081/realms/master}
+  cloud:
+    bus:
+      enabled: ${SPRING_CLOUD_BUS_ENABLED:false}
+    stream:
+      defaultBinder: rabbit
+
+server:
+  port: ${ORDER_SERVICE_PORT:8084}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      orderServiceCircuit:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        permitted-number-of-calls-in-half-open-state: 3
+
+logging:
+  level:
+    com.example.order: INFO
