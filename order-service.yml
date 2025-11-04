@@ -29,3 +29,9 @@ resilience4j:
 logging:
   level:
     com.example.order: INFO
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

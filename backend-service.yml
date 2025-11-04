@@ -1,6 +1,6 @@
 spring:
   application:
-    name: backend-service1
+    name: backend-service
   cloud:
     bus:
       enabled: ${SPRING_CLOUD_BUS_ENABLED:false}
@@ -15,3 +15,9 @@ management:
     web:
       exposure:
         include: health,info,refresh
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html

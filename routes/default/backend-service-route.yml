@@ -1,6 +1,6 @@
 ---
 id: "backend-service-route"
-uri: "lb://backend-service1"
+uri: "lb://backend-service"
 predicates:
 - "Path=/api/backend/**"
 filters:
@@ -30,3 +30,4 @@ filters:
 metadata:
   group: "default"
   description: "Backend service route"
+  enabled: false
