@@ -30,6 +30,12 @@ logging:
   level:
     com.example.order: INFO
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,refresh
+
 springdoc:
   api-docs:
     path: /v3/api-docs
