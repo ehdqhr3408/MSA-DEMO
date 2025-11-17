@@ -30,3 +30,4 @@ filters:
 metadata:
   group: "default"
   description: "Order service route"
+  enabled: false
